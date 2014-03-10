@@ -4,10 +4,9 @@
  *
  * One access token exists at a time for each user
  */
-var rconfig = {port: "49153", host: "172.17.0.18"};
 
+var redis = require('../common/redisConnection.js')
 
-var redis  = require('redis').createClient(rconfig.port, rconfig.host);
 var crypto = require('crypto');
 
 /*
