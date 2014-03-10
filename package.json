@@ -12,7 +12,8 @@
     "redis": "~0.10.0",
     "jade": "~1.1.5",
     "bcrypt": "~0.7.7",
-    "aws-sdk": "~2.0.0-rc9"
+    "aws-sdk": "~2.0.0-rc9",
+    "forever": "~0.10.11"
   },
   "devDependencies": {},
   "scripts": {
