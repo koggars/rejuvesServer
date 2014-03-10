@@ -2,7 +2,7 @@
  * redisConnection.js
  * Universal point of access to the application's redis database
  */
-if (process.env.REDISTOGO_URL) {
+if (process.env.REDIS_URL) {
 	//Example - redis://172.17.0.18:6379
 	
 	var redisString = process.env.REDISTOGO_URL;
