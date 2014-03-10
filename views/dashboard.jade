@@ -1,0 +1,78 @@
+doctype html
+html
+	head
+		link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css')
+		title Dashboard
+	body
+		nav.navbar.navbar-default
+			.container-fluid
+				.navbar-header
+					a.navbar-brand Rejuves Dashboard
+
+		table.table.table-hover
+			thead
+				tr
+					th Image
+					th Title
+					th Content
+					th Link
+			tbody
+				for story in stories
+					tr(id='row' + story.id)
+						td 
+							img.img-thumbnail(src=story.imgUrl, width=320, height=170)
+						td= story.title
+						td
+							p(style='text-align:justify')= story.content
+						td
+							ul.list-unstyled
+								li
+									a(href=story.webUrl, target='_blank')
+										span.glyphicon.glyphicon-globe
+								li
+									a.action-approve(href='#', data-id=story.id)
+										span.glyphicon.glyphicon-ok-circle
+								li
+									a.action-remove(href='#', data-id=story.id)
+										span.glyphicon.glyphicon-remove-circle
+
+		script.
+			function RemoveRow(id) {
+				var row = document.getElementById('row'+id);
+				row.parentNode.remove(row);
+			}
+
+			function PerformAction() {
+				var id = this.getAttribute('data-id');
+
+				var method = 'POST';
+
+				if (this.classList.contains('action-approve'))
+					method = 'PUT';
+				else if (this.classList.contains('action-remove'))
+					method = 'DELETE';
+
+				var request = new XMLHttpRequest;
+
+				request.open(method, '/dash/' + id, true);
+				request.onload = function() {
+					if (request.status != 200)
+						return alert('Could not perform action. Unkown error.');
+
+					RemoveRow(id);
+				}
+
+				request.onerror = function() {
+					alert('Can\'t connect to the server. Check internet connection');
+				}
+
+				request.send();
+			}
+
+			var approve_buttons = document.getElementsByClassName('action-approve');
+			var remove_buttons  = document.getElementsByClassName('action-remove');
+
+			for (var i = 0; i < approve_buttons.length; i++) {
+				approve_buttons[i].addEventListener('click', PerformAction);
+				remove_buttons[i].addEventListener('click', PerformAction);
+			}
