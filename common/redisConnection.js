@@ -13,7 +13,8 @@ if (process.env.REDIS_URL) {
 
 	console.log(port+ "\n");
 	console.log(hostname + "\n");
-	var redis = require("redis").createClient(port, hostname);
+	var redis = require("redis");
+	redis.createClient(port, hostname);
 
 } else {
 	var redis = require("redis").createClient();
