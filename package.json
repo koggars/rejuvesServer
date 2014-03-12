@@ -5,14 +5,14 @@
   "main": "server.js",
   "dependencies": {
     "express": "~3.4.8",
-    "pg": "~2.0.0",
-    "sequelize": "~1.7.0-rc2",
+    "sequelize": "~1.7.0-rc6",
     "oauth": "git://github.com/joshmcrae/node-oauth",
     "request": "~2.33.0",
     "redis": "~0.10.0",
     "jade": "~1.1.5",
     "bcrypt": "~0.7.7",
     "aws-sdk": "~2.0.0-rc9",
+    "pg": "~2.11.1",
     "forever": "~0.10.11"
   },
   "scripts": {
