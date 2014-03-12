@@ -7,7 +7,7 @@
 var User    = require('../models/user.js');
 var Admin   = require('../models/admin.js');
 var Token   = require('../models/token.js');
-var redis   = require('redis').createClient();
+var redis   = require('../common/redisConnection.js');
 var express = require('express');
 var bcrypt  = require('bcrypt');
 
