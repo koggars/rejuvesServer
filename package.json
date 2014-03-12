@@ -15,7 +15,6 @@
     "aws-sdk": "~2.0.0-rc9",
     "forever": "~0.10.11"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
